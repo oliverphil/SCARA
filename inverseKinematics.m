@@ -33,10 +33,10 @@ yj12 = yB - hB*sin(thetaB);
 
 %might want to only use outside angles so we don't need to check where the
 %arms are so they don't crash into each other
-anglej12 = atan((yj12-m1y)/(xj12-m1x));
-anglej11 = pi + atan((yj11-m1y)/(xj11-m1x));
-anglej22 = pi + atan((yj22-m2y)/(xj22-m2x));
-anglej21 = atan((yj21-m2y)/(xj21-m2x));
+anglej12 = atan2(yj12-m1y, xj12-m1x);
+anglej11 = atan2(yj11-m1y, xj11-m1x);
+anglej22 = atan2(yj22-m2y, xj22-m2x);
+anglej21 = atan2(yj21-m2y, xj21-m2x);
 
 
 
