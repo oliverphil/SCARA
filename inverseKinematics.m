@@ -1,11 +1,11 @@
 function [anglej12, anglej11, anglej22, anglej21] = inverseKinematics(x1, y1)
 %inverseKinematics find motor angles given pen position (SCARA)
 
-m1x = 227;
-m1y = 466;
-m2x = 373;
-m2y = 466;
-armLength = 150;
+m1x = 235;
+m1y = 467;
+m2x = 390;
+m2y = 472;
+armLength = 280;
 
 distance1 = sqrt((m2x-x1)^2 + (m2y-y1)^2)/2;
 distance2 = sqrt((m1x-x1)^2 + (m1y-y1)^2)/2;
