@@ -1,4 +1,4 @@
-function [ angleLeft, angleRight ] = kinematicsCheck(anglej12, anglej11, anglej22, anglej21)
+function [ angleLeft angleRight ] = kinematicsCheck(anglej12, anglej11, anglej22, anglej21)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 angleLeft = anglej12;
@@ -9,7 +9,7 @@ end
 if anglej12>pi
     angleLeft = anglej11;
 elseif anglej11>pi
-    angleLeft = anglej12
+    angleLeft = anglej12;
 end
 
 if angleLeft>pi
@@ -31,6 +31,8 @@ if angleRight<0
     return;
 end
 
+angleLeft = angleLeft*(180/pi);
+angleRight = angleRight*(180/pi);
 
 end
 

@@ -1,4 +1,4 @@
-function [anglej12, anglej11, anglej22, anglej21] = inverseKinematics(x1, y1)
+function [anglej12 anglej11 anglej22 anglej21] = inverseKinematics(x1, y1)
 %inverseKinematics find motor angles given pen position (SCARA)
 
 m1x = 235;
@@ -6,6 +6,10 @@ m1y = 467;
 m2x = 390;
 m2y = 472;
 armLength = 280;
+
+if y1<670
+    return;
+end
 
 distance1 = sqrt((m2x-x1)^2 + (m2y-y1)^2)/2;
 distance2 = sqrt((m1x-x1)^2 + (m1y-y1)^2)/2;
@@ -40,9 +44,8 @@ anglej21 = atan2(yj21-m2y, xj21-m2x);
 
 
 
-plot([m2x, x1], [m2y, y1], [m2x, xj21], [m2y, yj21], [m2x, xj22], [m2y, yj22], [xj21, x1], [yj21, y1], [xj22, x1], [yj22, y1], [m1x, x1], [m1y, y1], [m1x, xj11], [m1y, yj11], [m1x, xj12], [m2y, yj12], [xj11, x1], [yj11, y1], [xj12, x1], [yj12, y1])
-rectangle('Position', [xA-hA, yA-hA, hA*2, hA*2], 'Curvature', [1, 1])
-rectangle('Position', [xB-hB, yB-hB, hB*2, hB*2], 'Curvature', [1, 1])
-axis equal
+%plot([m2x, x1], [m2y, y1], [m2x, xj21], [m2y, yj21], [m2x, xj22], [m2y, yj22], [xj21, x1], [yj21, y1], [xj22, x1], [yj22, y1], [m1x, x1], [m1y, y1], [m1x, xj11], [m1y, yj11], [m1x, xj12], [m2y, yj12], [xj11, x1], [yj11, y1], [xj12, x1], [yj12, y1])
+%rectangle('Position', [xA-hA, yA-hA, hA*2, hA*2], 'Curvature', [1, 1])
+%rectangle('Position', [xB-hB, yB-hB, hB*2, hB*2], 'Curvature', [1, 1])
+%axis equal
 end
-
