@@ -1,14 +1,20 @@
-image = imread(uigetfile);
+filename = uigetfile;
+image = imread(filename);
 image = imresize(image, 0.6);
+
+theme(filename);
 
 s = 0.3;
 a = 0.1;
 
 greyscale =  rgb2gray(image);
 
-edges = edge(greyscale,'Canny')
+edges = edge(greyscale,'Canny');
 
 boundaries = bwboundaries(edges, 'noholes');
+
+figure
+imshow(edges)
 
 [vm1] = [];
 [vm2] = [];
