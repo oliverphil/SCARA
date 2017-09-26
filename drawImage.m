@@ -1,15 +1,21 @@
 filename = uigetfile;
 image = imread(filename);
-image = imresize(image, 0.6);
+image = imresize(image, 0.4);
 
 theme(filename);
 
 s = 0.3;
 a = 0.1;
 
-greyscale =  rgb2gray(image);
+[rows, cols, numberOfColorChannels] = size(image);
 
-edges = edge(greyscale,'Canny');
+if numberOfColorChannels > 1
+    greyscale =  rgb2gray(image);
+
+    edges = edge(greyscale,'Canny');
+else 
+    edges = edge(image, 'Canny');
+end
 
 boundaries = bwboundaries(edges, 'noholes');
 
@@ -25,7 +31,7 @@ pendown = [1500];
 for i=1:length(boundaries)
    b = boundaries{i};
     for j=1:length(b)       
-       [angle1 angle2] = inverseKinematics ((b(j,1))+275, b(j,2)+800);
+       [angle1 angle2] = inverseKinematics ((b(j,1))+250, b(j,2)+700);
        [v1 v2] = angToV(angle1, angle2);
        [vm1] = horzcat (vm1, v1);
        [vm2] = horzcat (vm2, v2);
